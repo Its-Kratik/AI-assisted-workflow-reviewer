@@ -1,0 +1,452 @@
+{
+  "bundle_id": "bundle_10_defective_unapproved_change",
+  "description": "Workflow incorporates an unapproved change (approved=False) reducing threshold to 20m.",
+  "requirements": [
+    {
+      "id": "R1",
+      "anchor": "sec_1_policy_r1",
+      "version": "1.0.0",
+      "precedence": 1,
+      "condition": {
+        "field": "category",
+        "operator": "is_null"
+      },
+      "target_route": "manual review",
+      "raw_text": "R1 Missing category -> manual review.",
+      "evidence_location": {
+        "artifact": "requirements",
+        "version": "1.0.0",
+        "file": "policy.md",
+        "line": 1,
+        "char_range": null,
+        "anchor_id": "R1"
+      },
+      "is_default": false,
+      "is_ambiguous": false,
+      "ambiguity_reason": null,
+      "unsupported_content": null
+    },
+    {
+      "id": "R2",
+      "anchor": "sec_1_policy_r2",
+      "version": "1.0.0",
+      "precedence": 2,
+      "condition": {
+        "field": "urgent",
+        "operator": "==",
+        "value": true
+      },
+      "target_route": "priority queue",
+      "raw_text": "R2 Otherwise, urgent ticket -> priority queue.",
+      "evidence_location": {
+        "artifact": "requirements",
+        "version": "1.0.0",
+        "file": "policy.md",
+        "line": 2,
+        "char_range": null,
+        "anchor_id": "R2"
+      },
+      "is_default": false,
+      "is_ambiguous": false,
+      "ambiguity_reason": null,
+      "unsupported_content": null
+    },
+    {
+      "id": "R3",
+      "anchor": "sec_1_policy_r3",
+      "version": "1.0.0",
+      "precedence": 3,
+      "condition": {
+        "field": "waiting_time",
+        "operator": ">=",
+        "value": 30,
+        "unit": "minutes"
+      },
+      "target_route": "escalation",
+      "raw_text": "R3 Otherwise, waiting >= 30 minutes -> escalation.",
+      "evidence_location": {
+        "artifact": "requirements",
+        "version": "1.0.0",
+        "file": "policy.md",
+        "line": 3,
+        "char_range": null,
+        "anchor_id": "R3"
+      },
+      "is_default": false,
+      "is_ambiguous": false,
+      "ambiguity_reason": null,
+      "unsupported_content": null
+    },
+    {
+      "id": "R_default",
+      "anchor": "sec_1_policy_default",
+      "version": "1.0.0",
+      "precedence": 4,
+      "condition": {
+        "operator": "always_true"
+      },
+      "target_route": "normal queue",
+      "raw_text": "All remaining tickets -> normal queue.",
+      "evidence_location": {
+        "artifact": "requirements",
+        "version": "1.0.0",
+        "file": "policy.md",
+        "line": 4,
+        "char_range": null,
+        "anchor_id": "R_default"
+      },
+      "is_default": true,
+      "is_ambiguous": false,
+      "ambiguity_reason": null,
+      "unsupported_content": null
+    }
+  ],
+  "specification": [
+    {
+      "rule_id": "SPEC-R1",
+      "version": "1.0.0",
+      "precedence": 1,
+      "condition": {
+        "field": "category",
+        "operator": "is_null"
+      },
+      "target_route": "manual review",
+      "evidence_location": {
+        "artifact": "specification",
+        "version": "1.0.0",
+        "file": "spec.json",
+        "line": 5,
+        "char_range": null,
+        "anchor_id": "SPEC-R1"
+      },
+      "source_requirement_id": "R1"
+    },
+    {
+      "rule_id": "SPEC-R2",
+      "version": "1.0.0",
+      "precedence": 2,
+      "condition": {
+        "field": "urgent",
+        "operator": "==",
+        "value": true
+      },
+      "target_route": "priority queue",
+      "evidence_location": {
+        "artifact": "specification",
+        "version": "1.0.0",
+        "file": "spec.json",
+        "line": 12,
+        "char_range": null,
+        "anchor_id": "SPEC-R2"
+      },
+      "source_requirement_id": "R2"
+    },
+    {
+      "rule_id": "SPEC-R3",
+      "version": "1.0.0",
+      "precedence": 3,
+      "condition": {
+        "field": "waiting_time",
+        "operator": ">=",
+        "value": 20.0,
+        "unit": "minutes"
+      },
+      "target_route": "escalation",
+      "evidence_location": {
+        "artifact": "specification",
+        "version": "1.0.0",
+        "file": "spec.json",
+        "line": 19,
+        "char_range": null,
+        "anchor_id": "SPEC-R3"
+      },
+      "source_requirement_id": "R3"
+    },
+    {
+      "rule_id": "SPEC-DEFAULT",
+      "version": "1.0.0",
+      "precedence": 4,
+      "condition": {
+        "operator": "always_true"
+      },
+      "target_route": "normal queue",
+      "evidence_location": {
+        "artifact": "specification",
+        "version": "1.0.0",
+        "file": "spec.json",
+        "line": 26,
+        "char_range": null,
+        "anchor_id": "SPEC-DEFAULT"
+      },
+      "source_requirement_id": "R_default"
+    }
+  ],
+  "workflow": {
+    "version": "1.0.0",
+    "entry_node": "start",
+    "nodes": {
+      "start": {
+        "node_id": "start",
+        "type": "decision",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 2,
+          "char_range": null,
+          "anchor_id": "start"
+        },
+        "action_route": null,
+        "linked_rule_id": null
+      },
+      "check_urgency": {
+        "node_id": "check_urgency",
+        "type": "decision",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 6,
+          "char_range": null,
+          "anchor_id": "check_urgency"
+        },
+        "action_route": null,
+        "linked_rule_id": null
+      },
+      "check_waiting": {
+        "node_id": "check_waiting",
+        "type": "decision",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 10,
+          "char_range": null,
+          "anchor_id": "check_waiting"
+        },
+        "action_route": null,
+        "linked_rule_id": null
+      },
+      "term_manual": {
+        "node_id": "term_manual",
+        "type": "terminal",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 14,
+          "char_range": null,
+          "anchor_id": "term_manual"
+        },
+        "action_route": "manual review",
+        "linked_rule_id": null
+      },
+      "term_priority": {
+        "node_id": "term_priority",
+        "type": "terminal",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 18,
+          "char_range": null,
+          "anchor_id": "term_priority"
+        },
+        "action_route": "priority queue",
+        "linked_rule_id": null
+      },
+      "term_escalation": {
+        "node_id": "term_escalation",
+        "type": "terminal",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 22,
+          "char_range": null,
+          "anchor_id": "term_escalation"
+        },
+        "action_route": "escalation",
+        "linked_rule_id": null
+      },
+      "term_normal": {
+        "node_id": "term_normal",
+        "type": "terminal",
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 26,
+          "char_range": null,
+          "anchor_id": "term_normal"
+        },
+        "action_route": "normal queue",
+        "linked_rule_id": null
+      }
+    },
+    "branches": [
+      {
+        "branch_id": "b1",
+        "source_node": "start",
+        "target_node": "term_manual",
+        "priority": 1,
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 30,
+          "char_range": null,
+          "anchor_id": null
+        },
+        "condition": {
+          "field": "category",
+          "operator": "is_null"
+        },
+        "linked_rule_id": null
+      },
+      {
+        "branch_id": "b2",
+        "source_node": "start",
+        "target_node": "check_urgency",
+        "priority": 2,
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 34,
+          "char_range": null,
+          "anchor_id": null
+        },
+        "condition": null,
+        "linked_rule_id": null
+      },
+      {
+        "branch_id": "b3",
+        "source_node": "check_urgency",
+        "target_node": "term_priority",
+        "priority": 1,
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 38,
+          "char_range": null,
+          "anchor_id": null
+        },
+        "condition": {
+          "field": "urgent",
+          "operator": "==",
+          "value": true
+        },
+        "linked_rule_id": null
+      },
+      {
+        "branch_id": "b4",
+        "source_node": "check_urgency",
+        "target_node": "check_waiting",
+        "priority": 2,
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 42,
+          "char_range": null,
+          "anchor_id": null
+        },
+        "condition": null,
+        "linked_rule_id": null
+      },
+      {
+        "branch_id": "b5",
+        "source_node": "check_waiting",
+        "target_node": "term_escalation",
+        "priority": 1,
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 46,
+          "char_range": null,
+          "anchor_id": null
+        },
+        "condition": {
+          "field": "waiting_time",
+          "operator": ">=",
+          "value": 20.0,
+          "unit": "minutes"
+        },
+        "linked_rule_id": null
+      },
+      {
+        "branch_id": "b6",
+        "source_node": "check_waiting",
+        "target_node": "term_normal",
+        "priority": 2,
+        "evidence_location": {
+          "artifact": "workflow",
+          "version": "1.0",
+          "file": "wf.json",
+          "line": 50,
+          "char_range": null,
+          "anchor_id": null
+        },
+        "condition": null,
+        "linked_rule_id": null
+      }
+    ],
+    "evidence_location": {
+      "artifact": "workflow",
+      "version": "1.0.0",
+      "file": "wf.json",
+      "line": 1,
+      "char_range": null,
+      "anchor_id": null
+    }
+  },
+  "snippets": [
+    {
+      "snippet_id": "snip_router_v1",
+      "version": "1.0.0",
+      "function_name": "route_ticket",
+      "code": "def route_ticket(ticket):\n    if ticket.get(\"category\") is None:\n        return \"manual review\"\n    if ticket.get(\"urgent\") is True:\n        return \"priority queue\"\n    waiting = ticket.get(\"waiting_time\") or 0.0\n    if waiting >= 20.0:\n        return \"escalation\"\n    return \"normal queue\"\n",
+      "evidence_location": {
+        "artifact": "script",
+        "version": "1.0.0",
+        "file": "router.py",
+        "line": 1,
+        "char_range": null,
+        "anchor_id": "route_ticket"
+      },
+      "linked_node_or_branch": null,
+      "linked_rule_id": null
+    }
+  ],
+  "approvals": [
+    {
+      "change_id": "CHG-PROPOSED-20",
+      "target_rule_id": "R3",
+      "approved": false,
+      "author": "intern@support.co",
+      "timestamp": "2026-03-02T12:00:00Z",
+      "scope": "R3 threshold modification",
+      "description": "Proposed lowering waiting threshold to 20 minutes (rejected by compliance).",
+      "evidence_location": {
+        "artifact": "approvals",
+        "version": "1.0",
+        "file": "approvals.json",
+        "line": 10,
+        "char_range": null,
+        "anchor_id": null
+      },
+      "proposed_condition": {
+        "field": "waiting_time",
+        "operator": ">=",
+        "value": 20,
+        "unit": "minutes"
+      },
+      "proposed_route": null,
+      "proposed_precedence": null
+    }
+  ],
+  "metadata": {}
+}

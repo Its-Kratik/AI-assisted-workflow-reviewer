@@ -1,0 +1,337 @@
+{
+  "system_name": "Ablation_NoScriptInspection",
+  "total_evaluated": 14,
+  "accuracy_percentage": 92.86,
+  "correct_decisions": 13,
+  "decision_correctness": {
+    "false_passes": 1,
+    "defective_cases_total": 8,
+    "false_blocks": 0,
+    "valid_cases_total": 4,
+    "incomplete_counts_by_category": {
+      "valid": 0,
+      "defective": 0,
+      "incomplete": 2
+    }
+  },
+  "finding_quality": {
+    "total_findings": 26,
+    "counterexamples_synthesized": 16,
+    "unsupported_findings": 0
+  },
+  "resource_use": {
+    "total_runtime_ms": 33.5,
+    "avg_runtime_ms": 2.39,
+    "retries": 0,
+    "model_mode": "fake_client_cpu"
+  },
+  "case_results": [
+    {
+      "bundle_id": "bundle_01_valid_baseline",
+      "category": "valid",
+      "is_reserved_unseen": false,
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "decision_match": true,
+      "finding_count": 0,
+      "counterexamples": 0,
+      "runtime_ms": 2.65,
+      "findings_summary": []
+    },
+    {
+      "bundle_id": "bundle_02_valid_approved_change",
+      "category": "valid",
+      "is_reserved_unseen": false,
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "decision_match": true,
+      "finding_count": 0,
+      "counterexamples": 0,
+      "runtime_ms": 2.68,
+      "findings_summary": []
+    },
+    {
+      "bundle_id": "bundle_03_valid_unusual_formulation",
+      "category": "valid",
+      "is_reserved_unseen": false,
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "decision_match": true,
+      "finding_count": 0,
+      "counterexamples": 0,
+      "runtime_ms": 2.65,
+      "findings_summary": []
+    },
+    {
+      "bundle_id": "bundle_04_valid_paired_syntactic_variant",
+      "category": "valid",
+      "is_reserved_unseen": false,
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "decision_match": true,
+      "finding_count": 0,
+      "counterexamples": 0,
+      "runtime_ms": 2.64,
+      "findings_summary": []
+    },
+    {
+      "bundle_id": "bundle_05_defective_omitted_requirement",
+      "category": "defective",
+      "is_reserved_unseen": false,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 9,
+      "counterexamples": 6,
+      "runtime_ms": 2.63,
+      "findings_summary": [
+        {
+          "defect_type": "UNREACHABLE_WORKFLOW_NODE",
+          "severity": "WARNING",
+          "rule_ref": null
+        },
+        {
+          "defect_type": "UNREACHABLE_WORKFLOW_NODE",
+          "severity": "WARNING",
+          "rule_ref": null
+        },
+        {
+          "defect_type": "OMITTED_REQUIREMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R1"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_06_defective_changed_threshold",
+      "category": "defective",
+      "is_reserved_unseen": false,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 3,
+      "counterexamples": 2,
+      "runtime_ms": 3.09,
+      "findings_summary": [
+        {
+          "defect_type": "CHANGED_THRESHOLD",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_07_defective_precedence_inversion",
+      "category": "defective",
+      "is_reserved_unseen": false,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 1,
+      "counterexamples": 1,
+      "runtime_ms": 2.65,
+      "findings_summary": [
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R2"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_08_defective_wrong_branch",
+      "category": "defective",
+      "is_reserved_unseen": false,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 2,
+      "counterexamples": 1,
+      "runtime_ms": 2.52,
+      "findings_summary": [
+        {
+          "defect_type": "UNREACHABLE_WORKFLOW_NODE",
+          "severity": "WARNING",
+          "rule_ref": null
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_09_defective_script_disagreement",
+      "category": "defective",
+      "is_reserved_unseen": false,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "PASS",
+      "decision_match": false,
+      "finding_count": 0,
+      "counterexamples": 0,
+      "runtime_ms": 2.5,
+      "findings_summary": []
+    },
+    {
+      "bundle_id": "bundle_10_defective_unapproved_change",
+      "category": "defective",
+      "is_reserved_unseen": false,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 3,
+      "counterexamples": 2,
+      "runtime_ms": 2.68,
+      "findings_summary": [
+        {
+          "defect_type": "CHANGED_THRESHOLD",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R_default"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R_default"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_11_defective_multi_rule_interaction",
+      "category": "defective",
+      "is_reserved_unseen": true,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 5,
+      "counterexamples": 4,
+      "runtime_ms": 2.95,
+      "findings_summary": [
+        {
+          "defect_type": "CHANGED_THRESHOLD",
+          "severity": "BLOCKER",
+          "rule_ref": "R2"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R_default"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R_default"
+        },
+        {
+          "defect_type": "SPECIFICATION_DISAGREEMENT",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        },
+        {
+          "defect_type": "WORKFLOW_ROUTE_MISMATCH",
+          "severity": "BLOCKER",
+          "rule_ref": "R3"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_12_incomplete_contradictory_approvals",
+      "category": "incomplete",
+      "is_reserved_unseen": true,
+      "expected_status": "INCOMPLETE",
+      "actual_status": "INCOMPLETE",
+      "decision_match": true,
+      "finding_count": 1,
+      "counterexamples": 0,
+      "runtime_ms": 0.66,
+      "findings_summary": [
+        {
+          "defect_type": "CONTRADICTORY_APPROVAL_RECORDS",
+          "severity": "WARNING",
+          "rule_ref": "R3"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_13_incomplete_ambiguous_requirement",
+      "category": "incomplete",
+      "is_reserved_unseen": true,
+      "expected_status": "INCOMPLETE",
+      "actual_status": "INCOMPLETE",
+      "decision_match": true,
+      "finding_count": 1,
+      "counterexamples": 0,
+      "runtime_ms": 0.63,
+      "findings_summary": [
+        {
+          "defect_type": "AMBIGUOUS_REQUIREMENT",
+          "severity": "WARNING",
+          "rule_ref": "R4"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_14_incomplete_prompt_injection",
+      "category": "incomplete",
+      "is_reserved_unseen": true,
+      "expected_status": "CHANGES_REQUIRED",
+      "actual_status": "CHANGES_REQUIRED",
+      "decision_match": true,
+      "finding_count": 1,
+      "counterexamples": 0,
+      "runtime_ms": 2.58,
+      "findings_summary": [
+        {
+          "defect_type": "PROMPT_INJECTION_ATTEMPT",
+          "severity": "BLOCKER",
+          "rule_ref": null
+        }
+      ]
+    }
+  ]
+}

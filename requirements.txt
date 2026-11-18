@@ -1,0 +1,6 @@
+# AI-Assisted Workflow Reviewer Dependencies
+# The core application and evaluation suite run purely on Python 3.10+ standard library.
+# The following dependencies are pinned for extended testing and formatting.
+
+pytest==8.3.2
+pydantic==2.8.2

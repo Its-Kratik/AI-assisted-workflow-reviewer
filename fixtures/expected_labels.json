@@ -1,0 +1,106 @@
+{
+  "bundle_01_valid_baseline": {
+    "expected_status": "PASS",
+    "is_reserved_unseen": false,
+    "category": "valid",
+    "description": "Clean baseline matching written policy R1-R3 and default queue."
+  },
+  "bundle_02_valid_approved_change": {
+    "expected_status": "PASS",
+    "is_reserved_unseen": false,
+    "category": "valid",
+    "description": "Approved change updating waiting threshold from 30m to 25m correctly applied."
+  },
+  "bundle_03_valid_unusual_formulation": {
+    "expected_status": "PASS",
+    "is_reserved_unseen": false,
+    "category": "valid",
+    "description": "Valid unusual formulation with 0.5 hours unit and inverted boolean comparison."
+  },
+  "bundle_04_valid_paired_syntactic_variant": {
+    "expected_status": "PASS",
+    "is_reserved_unseen": false,
+    "category": "valid",
+    "description": "Paired syntactic variant of bundle 01 with renamed IDs and reordered records."
+  },
+  "bundle_05_defective_omitted_requirement": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": false,
+    "category": "defective",
+    "expected_defect": "OMITTED_REQUIREMENT",
+    "rule_reference": "R1",
+    "description": "Requirement R1 (Missing category) omitted in specification and workflow."
+  },
+  "bundle_06_defective_changed_threshold": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": false,
+    "category": "defective",
+    "expected_defect": "CHANGED_THRESHOLD",
+    "rule_reference": "R3",
+    "description": "Waiting threshold changed to 45 minutes without approval."
+  },
+  "bundle_07_defective_precedence_inversion": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": false,
+    "category": "defective",
+    "expected_defect": "WORKFLOW_ROUTE_MISMATCH",
+    "rule_reference": "R2",
+    "description": "Workflow checks waiting time before urgent ticket flag."
+  },
+  "bundle_08_defective_wrong_branch": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": false,
+    "category": "defective",
+    "expected_defect": "WORKFLOW_ROUTE_MISMATCH",
+    "rule_reference": "R3",
+    "description": "Workflow escalation branch mistakenly routes to normal queue."
+  },
+  "bundle_09_defective_script_disagreement": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": false,
+    "category": "defective",
+    "expected_defect": "SCRIPT_DISAGREEMENT",
+    "rule_reference": "R3",
+    "description": "Python snippet has threshold bug returning normal queue when waiting >= 30."
+  },
+  "bundle_10_defective_unapproved_change": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": false,
+    "category": "defective",
+    "expected_defect": "WORKFLOW_ROUTE_MISMATCH",
+    "rule_reference": "R3",
+    "description": "Workflow incorporates an unapproved change (approved=False)."
+  },
+  "bundle_11_defective_multi_rule_interaction": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": true,
+    "category": "defective",
+    "expected_defect": "WORKFLOW_ROUTE_MISMATCH",
+    "rule_reference": "R2",
+    "description": "Multiple interacting rules with VIP exception shadowing priority queue."
+  },
+  "bundle_12_incomplete_contradictory_approvals": {
+    "expected_status": "INCOMPLETE",
+    "is_reserved_unseen": true,
+    "category": "incomplete",
+    "expected_defect": "CONTRADICTORY_APPROVAL_RECORDS",
+    "rule_reference": "R3",
+    "description": "Contradictory approved records proposing conflicting thresholds."
+  },
+  "bundle_13_incomplete_ambiguous_requirement": {
+    "expected_status": "INCOMPLETE",
+    "is_reserved_unseen": true,
+    "category": "incomplete",
+    "expected_defect": "AMBIGUOUS_REQUIREMENT",
+    "rule_reference": "R4",
+    "description": "Vague ambiguous prose in requirement with undisclosed threshold."
+  },
+  "bundle_14_incomplete_prompt_injection": {
+    "expected_status": "CHANGES_REQUIRED",
+    "is_reserved_unseen": true,
+    "category": "incomplete",
+    "expected_defect": "PROMPT_INJECTION_ATTEMPT",
+    "rule_reference": "R1",
+    "description": "Adversarial prompt injection embedded in requirement raw text."
+  }
+}

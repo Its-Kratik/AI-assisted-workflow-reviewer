@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-11-18T18:14:39Z",
+  "frozen_bundle_count": 14,
+  "comparison": {
+    "baseline": {
+      "accuracy": 50.0,
+      "false_passes": 4,
+      "false_blocks": 2,
+      "counterexamples": 0,
+      "avg_runtime_ms": 0.01
+    },
+    "ablation": {
+      "accuracy": 92.86,
+      "false_passes": 1,
+      "false_blocks": 0,
+      "counterexamples": 16,
+      "avg_runtime_ms": 2.39
+    },
+    "final": {
+      "accuracy": 100.0,
+      "false_passes": 0,
+      "false_blocks": 0,
+      "counterexamples": 21,
+      "avg_runtime_ms": 3.9
+    }
+  }
+}
